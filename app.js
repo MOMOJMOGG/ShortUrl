@@ -22,11 +22,9 @@ app.use(express.urlencoded({
 }));
 
 // Middleware
-const validator = body('targetUrl').isURL().withMessage('Invalid Url Format. Please Enter valid Url!')
+const urlValidator = body('targetUrl').isURL().withMessage('Invalid Url Format. Please Enter valid Url!')
 
-
-app.use(validator)
-
+app.use(urlValidator)
 app.use(routes)
 
 app.listen(PORT, () => {
