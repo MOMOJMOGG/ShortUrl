@@ -7,9 +7,14 @@ const ShortUrl = require('../../models/shortUrl')
 router.get('/:shortCode', async (req, res) => {
   try {
     const { shortCode } = req.params
-    console.log(shortCode)
-    const targetLink = await ShortUrl.findOne({ shortCode: shortCode }).then(obj => { return obj.targetLink }).catch(err => res.render('linkErr', { err }))
-    res.redirect(targetLink)
+
+    const isShortCodeExist = await ShortUrl.exists({ shortCode: shortCode })
+    if (isShortCodeExist) {
+      const targetLink = await ShortUrl.findOne({ shortCode: shortCode }).then(obj => { return obj.targetLink }).catch(err => res.render('linkErr', { err }))
+      res.redirect(targetLink)
+    } else {
+      res.render('linkErr', { err: 'Invalid shortCode' })
+    }
   } catch (err) {
     console.log(err)
     res.render('linkErr', { err })
