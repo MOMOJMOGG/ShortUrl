@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h3 class="card-title">Short Url Generator <i class="fas fa-link"></i></h3>
+          <hr>
+          <form method="POST" action="/">
+            <div class="form-group form-row">
+              <label for="targetUrl" class="col-md-3 col-form-label">
+                <h4>Paste Url :</h4>
+              </label>
+              <div class="col-md-9">
+                <input type="text" name="targetUrl" class="form-control" id="target-url"
+                  placeholder="Paste Url to transform shorter" value="{{targetUrl}}">
+              </div>
+            </div>
+            <!-- Err display -->
+            {{#if isInvalidUrl}}
+            <div class="alert alert-info" role="alert">
+              <span id="copy-link" class="mr-2">Error:</span><code class="text-danger"
+                　id="short-link">{{errMsg.msg}}</code>
+            </div>
+            {{/if}}
+            <!-- password display -->
+            {{#if isGenerateSucceed}}
+            <div class="alert alert-info" role="alert">
+              <span id="copy-link" class="mr-2">Copy</span><code　id="short-link">{{shortLink}}</code>
+            </div>
+            {{/if}}
+            <div class="text-center">
+              <button class="btn btn-success" type="submit">Generate ShortUrl</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,3 +4,5 @@ const router = express.Router()
 // 引用 Todo model
 const ShortUrl = require('../../models/shortUrl')
 
+// 匯出路由模組
+module.exports = router

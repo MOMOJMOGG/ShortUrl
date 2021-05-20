@@ -2,6 +2,7 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const moment = require('moment')
+const { body } = require('express-validator')
 const routes = require('./routes')
 require('./config/mongoose')
 
@@ -21,6 +22,10 @@ app.use(express.urlencoded({
 }));
 
 // Middleware
+const validator = body('targetUrl').isURL().withMessage('Invalid Url Format. Please Enter valid Url!')
+
+
+app.use(validator)
 
 app.use(routes)
 
