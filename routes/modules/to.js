@@ -3,26 +3,24 @@ const express = require('express')
 const router = express.Router()
 // 引用 Todo model
 const ShortUrl = require('../../models/shortUrl')
-const shortCodeValidator = require('./shortCodeIsValid')
+const shortCodeValidator = require('../../middleware/shortCodeIsValid')
 
 router.get('/:shortCode', shortCodeValidator, async (req, res) => {
-  try {
-    const shortCodeIsValid = res.locals.shortCodeIsValid
-    if (!shortCodeIsValid) {
-      res.render('linkErr', { err: 'Invalid shortCode : Short Code Must Be 5 Characters!' })
-    } else {
-      const { shortCode } = req.params
-      const isShortCodeExist = await ShortUrl.exists({ shortCode: shortCode })
-      if (isShortCodeExist) {
-        const targetLink = await ShortUrl.findOne({ shortCode: shortCode }).then(obj => { return obj.targetLink }).catch(err => res.render('linkErr', { err }))
-        res.redirect(targetLink)
-      } else {
-        res.render('linkErr', { err: 'Invalid shortCode : Short Code Do Not Existed in DB!' })
-      }
-    }
-  } catch (err) {
-    console.log(err)
-    res.render('linkErr', { err })
+  const shortCodeIsValid = res.locals.shortCodeIsValid
+  if (!shortCodeIsValid) {
+    res.render('linkErr', { err: 'Invalid shortCode : Short Code Must Be 5 Characters!' })
+  } else {
+    const { shortCode } = req.params
+    return ShortUrl.findOne({ shortCode: shortCode })
+      .lean()
+      .then((obj) => {
+        if (!obj) { // not find
+          return res.render('linkErr', { err: 'Invalid shortCode : Not in DB!' })
+        } else {
+          return res.redirect(obj.targetLink)
+        }
+      })
+      .catch(err => res.render('linkErr', { err }))
   }
 })
 
