@@ -21,7 +21,7 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-// Middleware
+// Middleware : 確認輸入為有效的 Url 連結
 const urlValidator = body('targetUrl').isURL().withMessage('Invalid Url Format. Please Enter valid Url!')
 
 app.use(urlValidator)

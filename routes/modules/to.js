@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 // 引用 Todo model
 const ShortUrl = require('../../models/shortUrl')
-const shortCodeValidator = require('../../middleware/shortCodeIsValid')
+const shortCodeValidator = require('../../middleware/shortCodeIsValid')  // middleware : 防止任意輸入的短碼，一定要是 5 碼才進行 post 流程
 
 router.get('/:shortCode', shortCodeValidator, async (req, res) => {
   const shortCodeIsValid = res.locals.shortCodeIsValid

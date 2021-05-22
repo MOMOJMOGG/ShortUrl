@@ -28,7 +28,6 @@ function urlCodeGenerator(idx) {
   if (!isExist) {
     return urlCodeGenerator(idx)
   } else {
-    console.log(code)
     return code
   }
 }
