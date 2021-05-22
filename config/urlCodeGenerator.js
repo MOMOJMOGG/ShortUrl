@@ -1,4 +1,3 @@
-const ShortUrl = require('../models/shortUrl')
 const selector = "abcdefghijkmnopqrstuvwxyz023456789ABCDEFGHIJKLMNPQRSTUVWXYZ" // remove 'O', '0', 'l', '1' that easy to confuse
 
 function sample(length) {
