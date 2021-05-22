@@ -17,19 +17,39 @@
             </div>
             <!-- Err display -->
             {{#if isInvalidUrl}}
-            <div class="alert alert-info" role="alert">
-              <span id="copy-link" class="mr-2">Error:</span><code class="text-danger"
-                　id="short-link">{{errMsg.msg}}</code>
+            <div class="form-group form-row">
+              <label for="targetUrl" class="col-md-3 col-form-label">
+                <h4>Error :</h4>
+              </label>
+              <div class="col-md-9">
+                <div class="alert alert-info" role="alert">
+                  <code class="text-danger" 　id="short-link">{{errMsg.msg}}</code>
+                </div>
+              </div>
             </div>
+
             {{/if}}
             <!-- password display -->
             {{#if isGenerateSucceed}}
-            <div class="alert alert-info" role="alert">
-              <span id="copy-link" class="mr-2">Copy</span><code　id="short-link">{{newLink}}</code>
+            <div class="form-group form-row">
+              <label for="targetUrl" class="col-md-3 col-form-label">
+                <div class="text-start">
+                  <button id="copy-btn" type="button" class="btn btn-outline-info" data-bs-toggle="tooltip"
+                    data-bs-placement="right" title="Copy Url">Copy Url :</button>
+                </div>
+              </label>
+              <div class="col-md-9">
+                <div class="alert alert-info" role="alert">
+                  <code class="text-danger" id="short-link">{{newLink}}</code>
+                </div>
+              </div>
             </div>
             {{/if}}
             <div class="text-center">
               <button class="btn btn-success" type="submit">Generate ShortUrl</button>
+              {{#if isGenerateSucceed}}
+              <a href="/" class="btn btn-outline-secondary">Clear Input Content</a>
+              {{/if}}
             </div>
           </form>
         </div>
