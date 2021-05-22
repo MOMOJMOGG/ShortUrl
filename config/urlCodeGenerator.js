@@ -19,8 +19,10 @@ async function checkValidCode(code) {
 function urlCodeGenerator(idx) {
   const seed = get_seed(idx)
   let code = ''
-  for (let i = 0; i < 5; i++) {
-    const select = Math.floor(seed * sample(selector.length))
+  const seedSelect = Math.floor(seed * selector.length)
+  code += selector[seedSelect]
+  for (let i = 0; i < 4; i++) {
+    const select = sample(selector.length)
     code += selector[select]
   }
 
@@ -32,4 +34,5 @@ function urlCodeGenerator(idx) {
   }
 }
 
-module.exports = urlCodeGenerator
+// module.exports = urlCodeGenerator
+console.log(urlCodeGenerator(15))
