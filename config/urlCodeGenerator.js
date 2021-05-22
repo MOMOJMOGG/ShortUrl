@@ -11,11 +11,6 @@ function get_seed(s) {
   return s - Math.floor(s)
 }
 
-async function checkValidCode(code) {
-  const isExist = await ShortUrl.exists({ ShortCode: code })
-  return isExist
-}
-
 function urlCodeGenerator(idx) {
   const seed = get_seed(idx)
   let code = ''
@@ -26,12 +21,7 @@ function urlCodeGenerator(idx) {
     code += selector[select]
   }
 
-  const isExist = checkValidCode(code)
-  if (!isExist) {
-    return urlCodeGenerator(idx)
-  } else {
-    return code
-  }
+  return code
 }
 
 module.exports = urlCodeGenerator
