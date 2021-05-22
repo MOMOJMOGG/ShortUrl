@@ -34,5 +34,4 @@ function urlCodeGenerator(idx) {
   }
 }
 
-// module.exports = urlCodeGenerator
-console.log(urlCodeGenerator(15))
+module.exports = urlCodeGenerator
