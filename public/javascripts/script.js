@@ -5,6 +5,7 @@ function append_zero(element) {
     return '' + element
   }
 }
+
 function get_date() {
   const date = new Date()
   const hour = date.getHours() + 1 // 0 ~ 23
@@ -18,6 +19,7 @@ $(document).ready(() => {
   const copyCode = document.getElementById('short-link')
   $('#copy-btn').click(() => {
     $('.toast').find('small').text(get_date())
+    $('.toast').find('.toast-body').text('Copy!')
     $('.toast').toast('show')
 
     const selection = window.getSelection()
@@ -26,5 +28,25 @@ $(document).ready(() => {
     selection.removeAllRanges()
     selection.addRange(range)
     document.execCommand('copy')
+  })
+
+  $('#submit-btn').click((e) => {
+    e.preventDefault()
+    const url = $('#target-url').val()
+
+    if (url === "") {
+      $('.toast').find('small').text(get_date())
+      $('.toast').find('.toast-body').text('Error: Empty Url!')
+      $('.toast').toast('show')
+    } else {
+      const pattern = /^(http|https):\/\//
+      if (pattern.exec(url) === null) {
+        $('.toast').find('small').text(get_date())
+        $('.toast').find('.toast-body').text('Error: Start Without http:// | https://')
+        $('.toast').toast('show')
+      } else {
+        $('#submit-form').submit()
+      }
+    }
   })
 })

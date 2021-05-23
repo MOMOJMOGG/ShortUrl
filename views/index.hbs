@@ -5,7 +5,7 @@
         <div class="card-body">
           <h3 class="card-title">Short Url Generator <i class="fas fa-link"></i></h3>
           <hr>
-          <form method="POST" action="/">
+          <form method="POST" action="/" id="submit-form">
             <div class="form-group form-row">
               <label for="targetUrl" class="col-md-3 col-form-label">
                 <h4>Paste Url :</h4>
@@ -46,7 +46,7 @@
             </div>
             {{/if}}
             <div class="text-center">
-              <button class="btn btn-success" type="submit">Generate ShortUrl</button>
+              <button id="submit-btn" class="btn btn-success" type="submit">Generate ShortUrl</button>
               {{#if isGenerateSucceed}}
               <a href="/" class="btn btn-outline-secondary">Clear Input Content</a>
               {{/if}}
