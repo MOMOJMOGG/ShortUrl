@@ -4,6 +4,13 @@
 
 ## Heroku 專案 Demo
 [MO哩 ‧ 短網址產生器](https://aqueous-temple-25790.herokuapp.com/)
+- 可以使用下列的種子連結
+```
+https://aqueous-temple-25790.herokuapp.com/Yu2bE // 連結到 Youtube
+https://aqueous-temple-25790.herokuapp.com/TrAnS // 連結到 Google 翻譯
+https://aqueous-temple-25790.herokuapp.com/AC666 // 連結到 ALPHA Camp 官網
+https://aqueous-temple-25790.herokuapp.com/MOMOJ // 連結到 本人 Github XD~
+```
 
 ## 專案畫面 Demo
 [<img align="center" src="https://github.com/MOMOJMOGG/ShortUrl/blob/master/public/images/HomePage.png" height="300" width="800" />]()
@@ -15,6 +22,13 @@
   - 合法 Url 檢查處裡
   - 回傳錯誤訊息
   - 一鍵複製短網址連結到剪貼簿
+- 專案運行後可使用下列種子連結
+```
+https://localhost:3000/Yu2bE // 連結到 Youtube
+https://localhost:3000/TrAnS // 連結到 Google 翻譯
+https://localhost:3000/AC666 // 連結到 ALPHA Camp 官網
+https://localhost:3000/MOMOJ // 連結到 本人 Github XD~
+```
 
 
 ## 環境建置需求與套件版本 - Prerequisies & Package Version
